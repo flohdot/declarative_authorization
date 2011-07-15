@@ -91,7 +91,7 @@ module Authorization
         dsl_files = [dsl_files].flatten
         dsl_files.each do |file|
           begin
-            reader.parse(File.read(file), file)
+            reader.parse(File.read(Rails.root.join(file)), file)
           rescue SystemCallError
             raise ::Authorization::Reader::DSLFileNotFoundError, "Error reading authorization rules file with path '#{file}'!  Please ensure it exists and that it is accessible."
           end
